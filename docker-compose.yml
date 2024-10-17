@@ -1,9 +1,7 @@
 services:
   repower-database:
     container_name: repower-database
-    build:
-      context: .
-      dockerfile: Dockerfile.database
+    build: .
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
