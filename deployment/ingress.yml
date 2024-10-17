@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: repower-database-ingress
+spec:
+  rules:
+  - host: resonance.collab-cloud.eu
+    http:
+      paths:
+      - backend:
+          service:
+            name: repower-database
+            port:
+              number: 5432
+        path: /repower-database
+        pathType: Prefix
