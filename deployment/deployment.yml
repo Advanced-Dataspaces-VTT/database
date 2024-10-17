@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: repower-database
+  name: repower-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repower-database
+  template:
+    metadata:
+      labels:
+        app: repower-database
+    spec:
+      containers:
+      - image: ghcr.io/advanced-dataspaces-vtt/database/stage:latest
+        name: repower-database
+        ports:
+        - containerPort: 5432
+      imagePullSecrets:
+      - name: repower-database-secret
