@@ -1,0 +1,14 @@
+services:
+  repower-database:
+    container_name: repower-database
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - repower_db_data:/var/lib/postgresql/data
